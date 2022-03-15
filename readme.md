@@ -2,8 +2,11 @@
 
 SKU attribute comparison tool.
 ***available parameters in the URL:***
+ 
  #sku_id    example : #444
+ 
  #sku_id1,sku_id2,...  example: #444,445
+ 
  #pnmask=[SQL PATTERN]   example: #pnmask=MQ702%
 
 ## Resources
