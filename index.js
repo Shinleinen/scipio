@@ -1073,14 +1073,19 @@ window.addEventListener('load', ()=>{
 				console.log(e.name);
 			}
 			document.getElementById('pnmask').value = s;
+			window.location.hash = 'pnmask='+s;
 		} else {
 			s = decodeURIComponent(s).replace(/[^0-9,]/g,'')?.split(',');
 			if (s?.length>0) {
+				window.location.hash = s.join(',');
 				s = s.join('\n');
 				if (s.length>1) document.getElementById('listed').checked = true;
 				el.value = s;
-			} else el.value = '';
+			} else {
+				el.value = '';
+				window.location.hash = '';
+			}
 		}
-		window.location.hash = '';
+		//window.location.hash = '';
 		if (s) check_submit();
 	},false);
