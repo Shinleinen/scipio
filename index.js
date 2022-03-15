@@ -999,7 +999,6 @@ function	resolve_value(v,u,s) {
 			return [((name || '<span class="e">empty</span>')+' '+unit).trim(), unit+(name||'')]; // second value with unit at start for sorting purpose
 }
 function	check_sku_input() {
-
 	let ta = document.getElementById('sku');
 	let v = ta.value.replace(/[^\d\s]*/g,'').replace(/(\s|\r?\n)+/g,"\n").trim();
 	ta.value = v;
@@ -1075,8 +1074,12 @@ window.addEventListener('load', ()=>{
 			}
 			document.getElementById('pnmask').value = s;
 		} else {
-			s = s.replace(/[^0-9]/g,'')*1;
-			el.value = s ? s : '';
+			s = decodeURIComponent(s).replace(/[^0-9,]/g,'')?.split(',');
+			if (s?.length>0) {
+				s = s.join('\n');
+				if (s.length>1) document.getElementById('listed').checked = true;
+				el.value = s;
+			} else el.value = '';
 		}
 		window.location.hash = '';
 		if (s) check_submit();
