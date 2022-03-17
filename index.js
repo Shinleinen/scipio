@@ -1078,8 +1078,8 @@ window.addEventListener('load', ()=>{
 			s = decodeURIComponent(s).replace(/[^0-9,]/g,'')?.split(',');
 			if (s?.length>0) {
 				window.location.hash = s.join(',');
-				s = s.join('\n');
 				if (s.length>1) document.getElementById('listed').checked = true;
+				s = s.join('\n');
 				el.value = s;
 			} else {
 				el.value = '';
